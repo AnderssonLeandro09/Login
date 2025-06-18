@@ -14,7 +14,7 @@
 
 ## Descripción
 
-SportBoard Login es una interfaz web moderna, responsiva y accesible para autenticación de usuarios, desarrollada con HTML, CSS y JavaScript puro. Pensada para proyectos universitarios, personales o institucionales, permite iniciar sesión, registrarse y recuperar contraseñas de manera intuitiva y visualmente atractiva.
+SportBoard Login es una interfaz web moderna, responsiva y accesible para autenticación de usuarios, desarrollada con HTML y CSS. Pensada para proyectos universitarios, personales o institucionales, permite iniciar sesión, registrarse y recuperar contraseñas de manera intuitiva y visualmente atractiva.
 
 ## Características
 
