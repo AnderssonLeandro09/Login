@@ -1,4 +1,5 @@
 # SportBoard - Login Web
+![image](https://github.com/user-attachments/assets/e0883538-7386-41e3-87c7-2ad476bfa724)
 
 Este proyecto es una interfaz de inicio de sesión web moderna y responsiva para SportBoard, desarrollada solo con HTML y CSS (y un poco de JavaScript para la experiencia de usuario). Incluye:
 
