@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Crear cuenta - SportBoard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="login-container">
+    <h1>Crear cuenta</h1>
+    <form>
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" placeholder="Tu nombre completo" required autocomplete="name">
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" placeholder="ejemplo@unl.edu.ec" required autocomplete="username">
+      <label for="password">Contraseña</label>
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Crea una contraseña" required autocomplete="new-password">
+        <button type="button" class="toggle-password" onclick="togglePassword('password', this)">👁️</button>
+      </div>
+      <label for="confirmar">Confirmar contraseña</label>
+      <div class="password-wrapper">
+        <input type="password" id="confirmar" placeholder="Repite la contraseña" required autocomplete="new-password">
+        <button type="button" class="toggle-password" onclick="togglePassword('confirmar', this)">👁️</button>
+      </div>
+      <button type="submit">Crear cuenta</button>
+    </form>
+    <div class="links">
+      <a href="index.html">¿Ya tienes una cuenta? Inicia sesión</a>
+    </div>
+  </div>
+  <script>
+    // Mantener el modo oscuro o claro según la preferencia
+    if(localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+    const btn = document.getElementById('toggle-theme');
+    const icon = document.getElementById('theme-icon');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      if(document.body.classList.contains('dark')) {
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+    function togglePassword(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = '🙈';
+      } else {
+        input.type = 'password';
+        btn.textContent = '👁️';
+      }
+    }
+    // Validación básica de contraseñas
+    document.querySelector('form').addEventListener('submit', function(e) {
+      const pass = document.getElementById('password').value;
+      const conf = document.getElementById('confirmar').value;
+      if(pass !== conf) {
+        e.preventDefault();
+        alert('Las contraseñas no coinciden.');
+      } else if(pass.length < 6) {
+        e.preventDefault();
+        alert('La contraseña debe tener al menos 6 caracteres.');
+      } else {
+        alert('¡Registro simulado!');
+      }
+    });
+  </script>
+</body>
+</html>

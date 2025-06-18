@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>SportBoard - Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="top-right-buttons">
+    <button id="toggle-theme" title="Cambiar modo claro/oscuro">
+      <span id="theme-icon">🌙</span>
+    </button>
+    <button id="toggle-view" title="Cambiar entre modo web y móvil">
+      <span id="view-icon">🖥️</span>
+    </button>
+  </div>
+  <div class="login-container">
+    <h1>SportBoard</h1>
+    <form>
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" placeholder="ejemplo@unl.edu.ec" required autocomplete="username">
+      
+      <label for="password">Contraseña</label>
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Ingresa tu contraseña" required autocomplete="current-password">
+        <button type="button" class="toggle-password" onclick="togglePassword('password', this)">👁️</button>
+      </div>
+      
+      <button type="submit">Iniciar sesión</button>
+    </form>
+    <div class="external-login-row">
+      <button class="external-btn google" title="Iniciar sesión con Google" tabindex="-1">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google" />
+      </button>
+      <button class="external-btn facebook" title="Iniciar sesión con Facebook" tabindex="-1">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" alt="Facebook" />
+      </button>
+      <button class="external-btn apple" title="Iniciar sesión con Apple" tabindex="-1">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="Apple" />
+      </button>
+      <button class="external-btn more" title="Más opciones" tabindex="-1">
+        <span class="more-dots">...</span>
+      </button>
+    </div>
+    <div class="links">
+      <a href="recuperar.html">¿Olvidaste tu contraseña?</a>
+      <a href="registro.html">¿No tienes una cuenta? Crea una</a>
+    </div>
+  </div>
+  <script>
+    // Mantener el modo oscuro o claro según la preferencia
+    if(localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      document.getElementById('theme-icon').textContent = '☀️';
+    }
+    if(localStorage.getItem('view') === 'mobile') {
+      document.body.classList.add('mobile');
+      document.getElementById('view-icon').textContent = '📱';
+    }
+    const btn = document.getElementById('toggle-theme');
+    const icon = document.getElementById('theme-icon');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      if(document.body.classList.contains('dark')) {
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+    const viewBtn = document.getElementById('toggle-view');
+    const viewIcon = document.getElementById('view-icon');
+    viewBtn.addEventListener('click', () => {
+      document.body.classList.toggle('mobile');
+      if(document.body.classList.contains('mobile')) {
+        viewIcon.textContent = '📱';
+        localStorage.setItem('view', 'mobile');
+      } else {
+        viewIcon.textContent = '🖥️';
+        localStorage.setItem('view', 'web');
+      }
+    });
+    function togglePassword(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = '🙈';
+      } else {
+        input.type = 'password';
+        btn.textContent = '👁️';
+      }
+    }
+    // Mejorar accesibilidad: Enter en inputs envía el formulario
+    document.querySelector('form').addEventListener('submit', function(e) {
+      // Aquí iría la lógica real de autenticación
+      e.preventDefault();
+      alert('¡Inicio de sesión simulado!');
+    });
+  </script>
+</body>
+</html>
